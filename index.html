@@ -11,13 +11,13 @@
       --brand-gold:#bda678;
       --brand-accent:#af4876;
       --brand-beige:#b7a97c;
-      --ink:#222;
+      --ink:#fdfdfd; /* text světlý */
       --paper:#f3efe6;
       --card:#ffffff;
-      --muted:#5f5747;
-      --ok:#2f8f46;
-      --warn:#b8562a;
-      --shadow:0 8px 24px rgba(0,0,0,.08);
+      --muted:#e0e0e0; /* světle šedý text */
+      --ok:#a2f5b0;
+      --warn:#ffb58a;
+      --shadow:0 8px 24px rgba(0,0,0,.3);
       --radius:18px;
     }
     *{box-sizing:border-box}
@@ -31,28 +31,27 @@
 
     header{
       position:relative; isolation:isolate;
-     
-      
-      border-bottom:1px solid rgba(0,0,0,.05);
+      background:none;
+      border-bottom:1px solid rgba(255,255,255,.1);
     }
     .hero{display:grid; gap:20px; align-items:center; grid-template-columns:1fr; min-height: clamp(420px, 50vh, 560px);}    
-    .hero h1{font-size: clamp(28px, 4.8vw, 46px); line-height:1.05; margin:0; letter-spacing:.2px}
-    .hero p.lead{font-size: clamp(16px, 2.1vw, 20px); color:var(--muted); margin:.5rem 0 1rem}
+    .hero h1{font-size: clamp(28px, 4.8vw, 46px); line-height:1.05; margin:0; letter-spacing:.2px; color:#fff}
+    .hero p.lead{font-size: clamp(16px, 2.1vw, 20px); color:#f0f0f0; margin:.5rem 0 1rem}
     .cta-row{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
     .btn{appearance:none; border:none; cursor:pointer; font-weight:700; letter-spacing:.2px; border-radius:999px; padding:14px 20px; box-shadow: var(--shadow); transition: transform .12s ease, box-shadow .12s ease, background .2s ease}
     .btn-primary{background:linear-gradient(180deg, var(--brand-accent), #9a3c69); color:#fff}
     .btn-primary:hover{transform:translateY(-1px)}
-    .btn-ghost{background:#ffffffc7; color:#000; border:1px solid rgba(0,0,0,.08)}
-    .btn-ghost:hover{transform:translateY(-1px)}
-    .pill{display:inline-flex; gap:8px; align-items:center; background:#efe8d6; color:#5b4f36; border:1px solid #e0d6bf; padding:8px 12px; border-radius:999px; font-size:13px; font-weight:600}
-    .pill svg{flex:0 0 auto}
+    .btn-ghost{background:rgba(255,255,255,0.2); color:#fff; border:1px solid rgba(255,255,255,.3)}
+    .btn-ghost:hover{transform:translateY(-1px); background:rgba(255,255,255,0.3)}
+    .pill{display:inline-flex; gap:8px; align-items:center; background:rgba(0,0,0,.4); color:#fff; border:1px solid rgba(255,255,255,.3); padding:8px 12px; border-radius:999px; font-size:13px; font-weight:600}
+    .pill svg{flex:0 0 auto; stroke:#fff}
 
-    section{padding: clamp(28px, 4.5vw, 56px) 0}
+    section{padding: clamp(28px, 4.5vw, 56px) 0; color:#222;}
     h2{font-size: clamp(22px, 3.2vw, 32px); margin:0 0 12px}
     p.sub{color:var(--muted); margin:0 0 22px}
 
     .grid{display:grid; gap:22px}
-    .calc{background:var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(16px, 2.2vw, 24px)}
+    .calc{background:var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(16px, 2.2vw, 24px); color:#222}
     .calc .head{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px}
     .badge{background: #fff1fc; color:#7b2e58; border:1px solid #f6d6ea; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px}
 
@@ -60,31 +59,31 @@
     .row{display:grid; gap:14px}
     .two{grid-template-columns:1fr}
     .label{font-weight:700; font-size:14px}
-    .input, .select, input[type="range"]{width:100%; font:inherit; padding:12px 14px; border-radius:12px; border:1px solid #e9e4d4; background:#fff}
+    .input, .select, input[type="range"]{width:100%; font:inherit; padding:12px 14px; border-radius:12px; border:1px solid #e9e4d4; background:#fff; color:#222}
     .input:focus, .select:focus, input[type="range"]:focus{outline:2px solid #eadfb8}
-    .hint{font-size:12px; color:var(--muted)}
+    .hint{font-size:12px; color:#666}
 
     .range-wrap{display:grid; gap:6px}
-    .range-values{display:flex; justify-content:space-between; font-size:12px; color:var(--muted)}
+    .range-values{display:flex; justify-content:space-between; font-size:12px; color:#666}
 
-    .out{border:1px dashed #e4dcc2; background:#fffbeb; border-radius:14px; padding:14px; display:grid; gap:6px}
+    .out{border:1px dashed #e4dcc2; background:#fffbeb; border-radius:14px; padding:14px; display:grid; gap:6px; color:#222}
     .out .big{font-size: clamp(20px, 3.2vw, 28px); font-weight:800}
-    .out .ok{color:var(--ok)}
-    .out .warn{color:var(--warn)}
+    .out .ok{color:green}
+    .out .warn{color:#c33}
 
-    .reco{background: #f5f1e4; border-radius:14px; padding:14px; border:1px solid #e7ddc3}
+    .reco{background: #f5f1e4; border-radius:14px; padding:14px; border:1px solid #e7ddc3; color:#222}
 
-    .trust{display:grid; grid-template-columns:repeat(2,1fr); gap:14px}
+    .trust{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; color:#222}
     .trust .card{background:#fff; border:1px solid #efe9d2; border-radius:14px; padding:14px; display:flex; gap:12px; align-items:flex-start}
     .trust .icon{flex:0 0 auto}
 
-    .cta-box{background:#f0eadb; border:1px solid #e2d7bf; border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(16px, 2.2vw, 24px)}
+    .cta-box{background:#f0eadb; border:1px solid #e2d7bf; border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(16px, 2.2vw, 24px); color:#222}
     .cta-box h3{margin:0 0 6px; font-size: clamp(18px, 2.6vw, 24px)}
     .cta-box form{display:grid; gap:10px}
     .agree{font-size:12px; color:#5a553e}
     .cta-box .btn{align-self:start}
 
-    footer{padding:32px 0; color:#6b6657; font-size:13px}
+    footer{padding:32px 0; color:#e0e0e0; font-size:13px}
     footer a{color:inherit}
 
     @media (min-width: 860px){
@@ -97,6 +96,9 @@
   </style>
 </head>
 <body>
+  <!-- obsah stránky zůstává beze změny -->
+
+
   <header>
     <div class="wrap hero">
       <div>
