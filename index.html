@@ -31,7 +31,7 @@
 
     header{
       position:relative; isolation:isolate;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.85);
       border-bottom:1px solid rgba(0,0,0,.05);
     }
     .hero{display:grid; gap:20px; align-items:center; grid-template-columns:1fr; min-height: clamp(420px, 50vh, 560px);}    
@@ -96,6 +96,140 @@
   </style>
 </head>
 <body>
-  <!-- celý obsah stránky zůstává stejný jako předtím -->
-</body>
-</html>
+  <header>
+    <div class="wrap hero">
+      <div>
+        <span class="pill" aria-label="Rychlá kalkulačka"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 11h16M4 7h16M4 15h10" stroke="#6c5c19" stroke-width="2" stroke-linecap="round"/></svg> 1min kalkulačka</span>
+        <h1>Kolik by vám <em>chybělo</em> při pracovní neschopnosti?</h1>
+        <p class="lead">Spočítejte si orientačně výpadek příjmu a doporučení denního plnění. Bez závazků, zdarma.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#kalkulacka">Spočítat zdarma</a>
+          <a class="btn btn-ghost" href="tel:+420733782290" aria-label="Zavolat poradci">Zavolat poradci</a>
+        </div>
+      </div>
+      <div class="calc" aria-labelledby="calcTitle">
+        <div class="head">
+          <div>
+            <div class="badge">Mini kalkulačka PN</div>
+            <h2 id="calcTitle" style="margin:.4rem 0 0">Rychlý odhad výpadku</h2>
+          </div>
+        </div>
+        <div class="form" id="kalkulacka">
+          <div class="row two">
+            <label class="field">
+              <div class="label">Měsíční čistý příjem (Kč)</div>
+              <input id="income" class="input" type="number" inputmode="numeric" min="0" step="100" value="35000" placeholder="např. 35 000" />
+              <div class="hint">Vaše průměrná čistá mzda za měsíc.</div>
+            </label>
+            <label class="field">
+              <div class="label">Fixní měsíční výdaje (Kč)</div>
+              <input id="expenses" class="input" type="number" inputmode="numeric" min="0" step="100" value="28000" placeholder="nájem, hypotéka, složenky…" />
+              <div class="hint">Co musíte zaplatit každý měsíc.</div>
+            </label>
+          </div>
+
+          <div class="row two">
+            <div class="range-wrap">
+              <div class="label">Počet dní pracovní neschopnosti</div>
+              <input id="days" type="range" min="7" max="90" value="30" />
+              <div class="range-values"><span>7</span><strong id="daysOut">30 dnů</strong><span>90</span></div>
+            </div>
+            <div class="range-wrap">
+              <div class="label">Odhad nemocenské</div>
+              <div class="input" aria-readonly="true">Počítáme orientačně s <strong>60&nbsp;%</strong> z čistého příjmu.</div>
+              <div class="range-values" style="display:none"><span>0%</span><strong id="pctOut">60 %</strong><span>70%</span></div>
+              <div class="hint">Skutečná výše nemocenské závisí na zákonných redukčních hranicích a délce PN.</div>
+            </div>
+          </div>
+
+          <div class="row two">
+            <label class="field">
+              <div class="label">Čekací doba pojištění</div>
+              <select id="waiting" class="select">
+                <option value="14">14 dní</option>
+                <option value="29" selected>29 dní</option>
+                <option value="57">57 dní</option>
+              </select>
+              <div class="hint">U některých variant lze 29/57 dní sjednat se zpětným plněním od 1. dne PN.</div>
+            </label>
+            <label class="field" style="display:flex; gap:10px; align-items:center; padding-top:6px">
+              <input id="retro" type="checkbox" />
+              <span class="label">Zpětné plnění od 1. dne (pro 29/57 dní)</span>
+            </label>
+          </div>
+
+          <div class="out" aria-live="polite">
+            <div><strong>Odhad nemocenské za zadané období:</strong> <span id="sickOut" class="big ok">–</span></div>
+            <div><strong>Chybějící částka na fixní výdaje:</strong> <span id="gapOut" class="big warn">–</span></div>
+            <div><strong>Doporučené denní plnění:</strong> <span id="dailyOut" class="big">–</span></div>
+          </div>
+
+          <div class="reco" id="recoText">Doporučení se aktualizuje dle počtu dní a čekací doby…</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="grid grid-2">
+      <div>
+        <h2>Jak to funguje</h2>
+        <p class="sub">Na základě vašeho příjmu a výdajů vypočítáme orientační výpadek a převedeme jej na doporučené <strong>denní plnění</strong>, které lze krýt pojištěním pracovní neschopnosti (počítáme s 60&nbsp;% nemocenské).</p>
+        <div class="trust">
+          <div class="card">
+            <div class="icon" aria-hidden="true">🔐</div>
+            <div>
+              <strong>Bez závazků</strong>
+              <div class="hint">Nejprve zjistíme situaci, až poté navrhnu řešení. Férově.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">📊</div>
+            <div>
+              <strong>Reálné scénáře</strong>
+              <div class="hint">Modelujeme 14/29/57 dní a možnost zpětného plnění.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="icon" aria-hidden="true">🤝</div>
+            <div>
+              <strong>Osobní přístup</strong>
+              <div class="hint">Vysvětlím podmínky srozumitelně, bez žargonu.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="cta-box" id="kontakt">
+          <h3>Získat nezávazné doporučení zdarma</h3>
+          <p class="sub">Pošlu vám shrnutí výpočtu + návrh variant (čekací doba, denní plnění, orientační cena).</p>
+          <form action="https://formspree.io/f/mjkwnelz" method="POST">
+            <input class="input" type="text" name="jmeno" placeholder="Jméno a příjmení" required>
+            <input class="input" type="email" name="email" placeholder="E‑mail" required>
+            <input class="input" type="tel" name="telefon" placeholder="Telefon" required>
+
+            <!-- Auto‑doplněná pole z kalkulačky -->
+            <input type="hidden" name="calc_income" id="f_income">
+            <input type="hidden" name="calc_expenses" id="f_expenses">
+            <input type="hidden" name="calc_days" id="f_days">
+            <input type="hidden" name="calc_pct" id="f_pct">
+            <input type="hidden" name="calc_waiting" id="f_waiting">
+            <input type="hidden" name="calc_retro" id="f_retro">
+            <input type="hidden" name="calc_sick_amount" id="f_sick">
+            <input type="hidden" name="calc_gap" id="f_gap">
+            <input type="hidden" name="calc_daily" id="f_daily">
+
+            <label class="agree"><input type="checkbox" required> Souhlasím se zpracováním kontaktních údajů za účelem zaslání výsledku a domluvy konzultace. (GDPR)</label>
+            <button class="btn btn-primary" type="submit">Chci poslat doporučení</button>
+            <div class="hint">Odesláním formuláře potvrzujete, že údaje jsou orientační a nepředstavují závaznou nabídku pojištění.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid grid-2r">
+      <div>
+        <h2>Časté dotazy</h2>
+        <details>
+          <summary><strong>Je tato kalkulačka přesná?</strong></summary>
+          <p>Výpočet je orientační. Skutečná výše státní nemocenské se řídí zákon
