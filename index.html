@@ -17,7 +17,7 @@
       --warn:#c33;
       --card:#ffffff;
       --paper:#f3efe6;
-      --shadow:0 8px 24px rgba(0,0,0,.15);
+      --shadow:0 8px 24px rgba(0,0,0,.08);
       --radius:18px;
     }
 
@@ -28,7 +28,7 @@
       background: url('pnpozadi.webp') no-repeat center top fixed, linear-gradient(180deg, var(--paper) 0%, #ece6d9 100%);
       background-size: cover;
     }
-    .wrap{max-width:1100px; margin:0 auto; padding: clamp(20px, 2.8vw, 32px);}    
+    .wrap{max-width:1100px; margin:0 auto; padding: clamp(16px, 2.5vw, 28px);}    
 
     header{
       position:relative; isolation:isolate;
@@ -38,7 +38,6 @@
     .hero{display:grid; gap:20px; align-items:center; grid-template-columns:1fr; min-height: clamp(420px, 50vh, 560px);}    
     .hero h1{font-size: clamp(28px, 4.8vw, 46px); line-height:1.05; margin:0; letter-spacing:.2px; color:var(--ink)}
     .hero p.lead{font-size: clamp(16px, 2.1vw, 20px); color:var(--muted); margin:.5rem 0 1rem}
-
     .cta-row{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
     .btn{appearance:none; border:none; cursor:pointer; font-weight:700; letter-spacing:.2px; border-radius:999px; padding:14px 20px; box-shadow: var(--shadow); transition: transform .12s ease, box-shadow .12s ease, background .2s ease}
     .btn-primary{background:linear-gradient(180deg, var(--brand-accent), #9a3c69); color:#fff}
@@ -48,15 +47,54 @@
     h2{font-size: clamp(22px, 3.2vw, 32px); margin:0 0 12px; color:var(--ink)}
     p.sub{color:var(--muted); margin:0 0 22px; font-size:17px}
 
-    .calc,.cta-box,.trust .card,.reco,.out{color:#222;}
+    .grid{display:grid; gap:22px}
+    .calc{background:var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(16px, 2.2vw, 24px); color:#222; font-size:17px}
+    .calc .head{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px}
+    .badge{background: #fff1fc; color:#7b2e58; border:1px solid #f6d6ea; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px}
+
+    .form{display:grid; gap:14px}
+    .row{display:grid; gap:14px}
+    .two{grid-template-columns:1fr}
+    .label{font-weight:700; font-size:14px}
+    .input, .select, input[type="range"]{width:100%; font:inherit; padding:12px 14px; border-radius:12px; border:1px solid #e9e4d4; background:#fff; color:#222}
+    .hint{font-size:12px; color:#666}
+
+    .range-wrap{display:grid; gap:6px}
+    .range-values{display:flex; justify-content:space-between; font-size:12px; color:#666}
+
+    .out{border:1px dashed #e4dcc2; background:#fffbeb; border-radius:14px; padding:14px; display:grid; gap:6px; color:#222}
+    .out .big{font-size: clamp(20px, 3.2vw, 28px); font-weight:800}
+    .out .ok{color:var(--ok)}
+    .out .warn{color:var(--warn)}
+
+    .reco{background: #f5f1e4; border-radius:14px; padding:14px; border:1px solid #e7ddc3; color:#222}
+
+    .trust{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; color:#222}
+    .trust .card{background:#fff; border:1px solid #efe9d2; border-radius:14px; padding:14px; display:flex; gap:12px; align-items:flex-start}
+    .trust .icon{flex:0 0 auto}
+
+    .cta-box{background:#f0eadb; border:1px solid #e2d7bf; border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(16px, 2.2vw, 24px); color:#222}
+    .cta-box h3{margin:0 0 6px; font-size: clamp(18px, 2.6vw, 24px)}
+    .cta-box form{display:grid; gap:10px}
+    .agree{font-size:12px; color:#5a553e}
+    .cta-box .btn{align-self:start}
 
     details{margin-bottom:14px; font-size:17px;}
     details summary{cursor:pointer; font-weight:700; color:var(--ink); font-size:18px}
     details p{margin:8px 0 0; color:var(--ink); background:#333; padding:10px; border-radius:12px}
 
-    footer{padding:32px 0; color:var(--ink); font-size:14px; text-align:center;}
+    footer{padding:32px 0; color:var(--ink); font-size:13px; text-align:center;}
+    footer a{color:inherit}
+
+    @media (min-width: 860px){
+      .hero{grid-template-columns:1.15fr .85fr}
+      .two{grid-template-columns:1fr 1fr}
+      .grid-2{grid-template-columns:1.2fr .8fr}
+      .grid-2r{grid-template-columns:.9fr 1.1fr}
+      .trust{grid-template-columns:repeat(3,1fr)}
+    }
   </style>
-</head>
+
 
 <body>
   <!-- kompletní obsah stránky zůstává stejný -->
